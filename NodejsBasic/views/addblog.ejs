@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="urf-8">
+    <title></title>
+    
+  </head>
+  <body>
+    <%- include layout %>
+    <div class="container">
+      <h2 align="center">เพิ่มข้อมูลเข้ารับวัคซีน</h2>
+      <%- messages() %>
+
+      <% if(locals.errors) { %>
+      <ul class="alert alert-danger">
+          <% Object.values(errors).forEach(function (error) { %>
+            <li><%= error.msg %></li>
+            <% }) %>
+      </ul>
+      <% } %>
+      <form class="" action="" method="post">
+          <div class="from-group">
+            <label for="">ชื่อ-นามสกุล</label> 
+            <input type="text" name="name" value="" class="form-control">
+          </div>
+          <div class="from-group">
+            <label for="">วัคซีนเข็มที่เท่าไหร่</label>
+            <input type="text" name="num_vaccine" value="" class="form-control">
+          </div>
+          <div class="from-group">
+            <label for="">ประเภทวัคซีน</label>
+            <input type="text" name="name_vaccine" value="" class="form-control">
+          </div>
+          
+            <input type="submit" name="" value="บันทึก" class="btn btn-primary">
+
+      </form>
+    </div>
+    <script>
+        $(function(){
+            $('#messages').addClass('alert alert-success');
+        })
+        CKEDITOR.replace( 'description' );
+    </script>
+    
+  </body>
+</html>
