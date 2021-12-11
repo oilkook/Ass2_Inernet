@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const db = require('monk')('localhost:27017/VaccineDB');
-const { check, validationResult, Result } = require('express-validator');
-
+const { check, validationResult, Result, body } = require('express-validator');
+const Blogs=require('../models/blogs')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -14,7 +14,8 @@ router.get('/add', function(req, res, next) {
 router.post('/add',[
   check("name","กรุณาป้อนชื่อ-นามสกุล").not().isEmpty(),
   check("num_vaccine","กรุณาใส่จำนวนวัคซีน").not().isEmpty(),
-  check("name_vaccine","กรุณาป้อนประเภทวัคซีน").not().isEmpty()
+  check("name_vaccine","กรุณาป้อนประเภทวัคซีน").not().isEmpty(),
+  check("detail","กรุณาป้อนอาการ").not().isEmpty()
 ], function(req, res, next) {
   const result = validationResult(req);
   var errors=result.errors;
@@ -27,7 +28,8 @@ router.post('/add',[
       ct.insert({
         name:req.body.name,
         num_vaccine:req.body.num_vaccine,
-        name_vaccine:req.body.name_vaccine
+        name_vaccine:req.body.name_vaccine,
+        detail:req.body.detail
       },function(err,blog){
         if(err){
           res.send(err);
@@ -35,8 +37,16 @@ router.post('/add',[
           req.flash("success", "บันทึกข้อมูลสำเร็จ");
           res.location('/blog/add');
           res.redirect('/blog/add');
+          console.log(req.body.name);
+          console.log(req.body.num_vaccine);
+          console.log(req.body.name_vaccine);
+          console.log(req.body.detail);
         }
       })
+      // Blogs.createBlog(ct,function(err,callback){
+      //   if(err) console.log(err);
+      //   res.redirect('/');
+      // })
     }
   // console.log(req.body.name);
   // console.log(req.body.num_vaccine);
@@ -50,4 +60,3 @@ router.post('/add',[
 //   });
 
 module.exports = router;
-  

@@ -18,21 +18,44 @@
             <% }) %>
       </ul>
       <% } %>
-      <form class="" action="" method="post">
+      <form class="" action="/blog/add" method="post">
           <div class="from-group">
             <label for="">ชื่อ-นามสกุล</label> 
             <input type="text" name="name" value="" class="form-control">
           </div>
           <div class="from-group">
             <label for="">วัคซีนเข็มที่เท่าไหร่</label>
-            <input type="text" name="num_vaccine" value="" class="form-control">
+            <select name="num_vaccine" id="" class="form-control"> 
+              <option value="เข็มที่ 1">เข็มที่ 1</option>
+              <option value="เข็มที่ 2">เข็มที่ 2</option>
+              <option value="เข็มที่ 3">เข็มที่ 3</option>
+              <option value="เข็มที่ 4">เข็มที่ 4</option>
+              <option value="เข็มที่ 5">เข็มที่ 5</option>
+              <option value="เข็มที่ 6">เข็มที่ 6</option>
+              <option value="เข็มที่ 7">เข็มที่ 7</option>
+              <option value="เข็มที่ 8">เข็มที่ 8</option>
+            </select>
           </div>
           <div class="from-group">
-            <label for="">ประเภทวัคซีน</label>
-            <input type="text" name="name_vaccine" value="" class="form-control">
+            <label for="">เลือกวัคซีน</label>
+            <select name="name_vaccine" id="" class="form-control"> 
+              <option value="Moderna">Moderna</option>
+              <option value="Pfizer">Pfizer</option>
+              <option value="AstraZeneca">AstraZeneca</option>
+              <option value="Sinovac">Sinovac</option>
+              <option value="Sinopharm">Sinopharm</option>
+              <option value="Johnson&Johnson">Johnson&Johnson</option>
+              <option value="Novavax">Novavax</option>
+
+            </select>
+          </div>
+          <div class="from-group">
+            <label for="">อาการหลังฉีด</label> 
+            <input type="text" name="detail" value="" class="form-control">
           </div>
           
             <input type="submit" name="" value="บันทึก" class="btn btn-primary">
+            <a href="/" class="btn btn-success">กลับหน้าแรก</a>
 
       </form>
     </div>
